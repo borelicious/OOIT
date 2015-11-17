@@ -154,6 +154,10 @@ public class Test {
 		
 		System.out.println(t5.toString());
 		System.out.println(l5.toString());
+		
+		//t5 = t6;
+		
+		System.out.println(t5.equals(t6));
 	
 	
 	}

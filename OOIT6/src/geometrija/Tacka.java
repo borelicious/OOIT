@@ -1,14 +1,36 @@
 package geometrija;
 
-public class Tacka {
+public class Tacka extends Oblik{
 	private int x;
 	private int y;
-	private String boja;
 	
-	public Tacka (int x, int y, String boja){
+	public Tacka(){
+		
+	}
+	
+	public Tacka(int x, int y){
 		this.x = x;
 		this.y = y;
-		this.boja = boja;
+	}
+	
+	public Tacka (int x, int y, String boja){
+		super(boja);
+		this.x = x;
+		this.y = y;
+	}
+	
+	public boolean equals(Object obj){
+		if(obj instanceof Tacka){
+			Tacka pomocna = (Tacka)obj;
+			if(this.x == pomocna.getX() && 
+					this.y == pomocna.getY() && 
+					this.getBoja().equalsIgnoreCase(pomocna.getBoja()))
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
 	}
 	
 	public String toString() {
@@ -45,11 +67,4 @@ public class Tacka {
 		this.y = y;
 	}
 
-	public String getBoja() {
-		return boja;
-	}
-
-	public void setBoja(String boja) {
-		this.boja = boja;
-	}
 }

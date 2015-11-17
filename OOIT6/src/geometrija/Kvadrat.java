@@ -1,14 +1,22 @@
 package geometrija;
 
-public class Kvadrat {
+public class Kvadrat extends Oblik{
 	private Tacka goreLevo;
-	private int stranica;
-	private String boja;
+	protected int stranica;
 	
-	public Kvadrat(Tacka goreLevo, int stranica, String boja){
+	public Kvadrat(){
+		
+	}
+	
+	public Kvadrat(Tacka goreLevo, int stranica){
 		this.goreLevo = goreLevo;
 		this.stranica = stranica;
-		this.boja = boja;
+	}
+	
+	public Kvadrat(Tacka goreLevo, int stranica, String boja){
+		super(boja);
+		this.goreLevo = goreLevo;
+		this.stranica = stranica;
 	}
 	
 	public String toString() {
@@ -50,11 +58,4 @@ public class Kvadrat {
 		this.stranica = stranica;
 	}
 
-	public String getBoja() {
-		return boja;
-	}
-
-	public void setBoja(String boja) {
-		this.boja = boja;
-	}
 }

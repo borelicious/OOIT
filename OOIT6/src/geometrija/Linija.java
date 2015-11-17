@@ -1,14 +1,36 @@
 package geometrija;
 
-public class Linija {
+public class Linija extends Oblik{
 	private Tacka tPocetna;
 	private Tacka tKrajnja;
-	private String boja;
 	
-	public Linija(Tacka tPocetna, Tacka tKrajnja, String boja){
+	public Linija(){
+		
+	}
+	
+	public Linija(Tacka tPocetna, Tacka tKrajnja){
 		this.tPocetna = tPocetna;
 		this.tKrajnja = tKrajnja;
-		this.boja = boja;
+	}
+	
+	public Linija(Tacka tPocetna, Tacka tKrajnja, String boja){
+		super(boja);
+		this.tPocetna = tPocetna;
+		this.tKrajnja = tKrajnja;
+	}
+	
+	public boolean equals(Object obj){
+		if(obj instanceof Linija){
+			Linija pomocna = (Linija)obj;
+			if(this.tPocetna == pomocna.gettPocetna() && 
+					this.tKrajnja == pomocna.gettKrajnja() && 
+					this.getBoja().equalsIgnoreCase(pomocna.getBoja()))
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
 	}
 	
 	public String toString() {
@@ -45,11 +67,4 @@ public class Linija {
 		this.tKrajnja = tKrajnja;
 	}
 
-	public String getBoja() {
-		return boja;
-	}
-
-	public void setBoja(String boja) {
-		this.boja = boja;
-	}
 }

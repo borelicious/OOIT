@@ -1,14 +1,27 @@
 package geometrija;
 
-public class Krug {
+public class Krug extends Oblik{
 	private Tacka centar;
 	private int radius;
-	private String boja;
 	
-	public Krug(Tacka centar, int radius, String boja){
+	public Krug(){
+		
+	}
+	
+	public Krug(Tacka centar, int radius){
 		this.centar = centar;
 		this.radius = radius;
-		this.boja = boja;
+	}
+	
+	public Krug(Tacka centar, int radius, String boja){
+		super(boja);
+		this.centar = centar;
+		this.radius = radius;
+	}
+	
+	public String toString() {
+		String s = "Centar: " + this.centar.toString() + ", poluprecnik: " + this.radius;
+		return s;
 	}
 	
 	public double obim() {
@@ -34,11 +47,4 @@ public class Krug {
 		this.radius = radius;
 	}
 
-	public String getBoja() {
-		return boja;
-	}
-
-	public void setBoja(String boja) {
-		this.boja = boja;
-	}
 }
