@@ -1,5 +1,7 @@
 package geometrija;
 
+import java.awt.Graphics;
+
 public class Linija extends Oblik{
 	private Tacka tPocetna;
 	private Tacka tKrajnja;
@@ -19,17 +21,34 @@ public class Linija extends Oblik{
 		this.tKrajnja = tKrajnja;
 	}
 	
-	public boolean equals(Object obj){
-		if(obj instanceof Linija){
-			Linija pomocna = (Linija)obj;
-			if(this.tPocetna == pomocna.gettPocetna() && 
-					this.tKrajnja == pomocna.gettKrajnja() && 
-					this.getBoja().equalsIgnoreCase(pomocna.getBoja()))
-				return true;
+	
+	public void crtajSe(Graphics g) {
+		g.drawLine(tPocetna.getX(), tPocetna.getY(), tKrajnja.getX(), tKrajnja.getY());
+	}
+
+	
+	public boolean equals(Object obj) {
+		if (obj instanceof Linija) {
+			Linija pomocna = (Linija) obj;
+			if (tPocetna.equals(pomocna.tPocetna) 
+					&& tKrajnja.equals(pomocna.tKrajnja)) {
+
+				if (this.getBoja()== null && pomocna.getBoja() == null)
+					return true;
+				else if (this.getBoja()!= null && pomocna.getBoja()!=null){
+					if(this.tPocetna.getBoja().equalsIgnoreCase(pomocna.tKrajnja.getBoja()))
+						return true;
+					else
+						return false;
+				}
+				else
+					return false;
+
+			}
 			else
 				return false;
 		}
-		else
+		else 
 			return false;
 	}
 	
@@ -38,9 +57,11 @@ public class Linija extends Oblik{
 		return s;
 	}
 	
-	public Tacka sredinaLinije() {
-		Tacka tSredina = new Tacka((this.tPocetna.getX()-this.tKrajnja.getX())/2, (this.tPocetna.getY()-this.tKrajnja.getY())/2, null);
-		return tSredina;
+	public Tacka sredinaLinije(){
+		int sredinaX = (tPocetna.getX() + tKrajnja.getX()) / 2;
+		int sredinaY = (tPocetna.getY() + tKrajnja.getY()) / 2;
+		Tacka sredina = new Tacka(sredinaX,sredinaY);
+		return sredina;
 	}
 	
 	public void pomeriZa(int poX, int poY) {

@@ -1,5 +1,7 @@
 package geometrija;
 
+import java.awt.Graphics;
+
 public class Krug extends Oblik{
 	private Tacka centar;
 	private int radius;
@@ -17,6 +19,21 @@ public class Krug extends Oblik{
 		super(boja);
 		this.centar = centar;
 		this.radius = radius;
+	}
+	
+	
+	public void crtajSe(Graphics g) {
+		g.drawOval(centar.getX() - radius, centar.getY() - radius, 2*radius, 2*radius);
+	}	
+	
+	public boolean equals(Object obj){
+		if(obj instanceof Krug){
+			Krug pomocni = (Krug)obj;
+			if(this.getCentar().equals(pomocni.getCentar()) && 
+					this.getRadius() == pomocni.getRadius())
+				return true;
+		}
+		return false;
 	}
 	
 	public String toString() {

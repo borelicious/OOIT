@@ -1,5 +1,7 @@
 package geometrija;
 
+import java.awt.Graphics;
+
 public class Pravougaonik extends Kvadrat{
 	private int visina;
 	
@@ -12,6 +14,22 @@ public class Pravougaonik extends Kvadrat{
 		this(goreLevo, visina, sirina);
 		setBoja(boja);
 	}
+	
+	public void crtajSe(Graphics g) {
+		g.drawRect(super.getGoreLevo().getX(), super.getGoreLevo().getX(), super.getStranica(), visina);
+	}
+	
+	public boolean equals(Object obj){
+		if(obj instanceof Pravougaonik){
+			Pravougaonik pomocna = (Pravougaonik) obj;
+			if (super.getGoreLevo().equals(pomocna.getGoreLevo()) && this.visina==pomocna.visina && super.stranica == pomocna.stranica)
+				return true;
+			else
+				return false;
+		}
+		else 
+			return false;
+	}	
 	
 	public String toString() {
 		String s = "Gornji levi ugao: " + getGoreLevo().toString() + ", sirina: " + stranica + ", visina: " + this.visina;

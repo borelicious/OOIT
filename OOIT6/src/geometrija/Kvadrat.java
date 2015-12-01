@@ -1,5 +1,7 @@
 package geometrija;
 
+import java.awt.Graphics;
+
 public class Kvadrat extends Oblik{
 	private Tacka goreLevo;
 	protected int stranica;
@@ -18,6 +20,24 @@ public class Kvadrat extends Oblik{
 		this.goreLevo = goreLevo;
 		this.stranica = stranica;
 	}
+	
+	
+	public void crtajSe(Graphics g) {
+		g.drawRect(goreLevo.getX(), goreLevo.getY(), stranica, stranica);
+	}
+	
+	public boolean equals(Object obj){
+		if(obj instanceof Kvadrat){
+			Kvadrat pomocna = (Kvadrat) obj;
+			if (this.goreLevo.equals(pomocna.goreLevo) && this.stranica==pomocna.stranica)
+				return true;
+			else
+				return false;
+		}
+		else 
+			return false;
+	}	
+	
 	
 	public String toString() {
 		String s = "Gornji levi ugao= " + this.goreLevo.toString() + ", stranica= " + this.stranica;  

@@ -1,5 +1,7 @@
 package geometrija;
 
+import java.awt.Graphics;
+
 public class Tacka extends Oblik{
 	private int x;
 	private int y;
@@ -17,6 +19,11 @@ public class Tacka extends Oblik{
 		super(boja);
 		this.x = x;
 		this.y = y;
+	}
+	
+	public void crtajSe(Graphics g) {
+		g.drawLine(x, y-2, x, y+2);
+		g.drawLine(x-2, y, x+2, y);
 	}
 	
 	public boolean equals(Object obj){
