@@ -50,8 +50,6 @@ public class Crtez extends JPanel{
 		Krug kr1 = new Krug(k1.dijagonala().sredinaLinije(), k1.getStranica()/2);
 		kr1.crtajSe(g);
 		
-		Krug kr2 = new Krug(p1.centar(), (int)p1.dijagonala().duzinaLinije()/2);
-		kr2.crtajSe(g);
 	}
 
 }
