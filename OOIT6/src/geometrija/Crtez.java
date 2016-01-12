@@ -6,7 +6,25 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Crtez extends JPanel{
+	ArrayList oblici = new ArrayList();
+	
+	public Crtez() {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Tacka t = new Tacka(e.getX(), e.getY());
+				oblici.add(t);
+			}
+		});
+	}
 
 	public static void main(String[] args) {
 		
@@ -25,7 +43,7 @@ public class Crtez extends JPanel{
 		//g.setColor(Color.BLUE);
 		//g.drawString("Neki string", 100, 100);
 		
-		Tacka t1 = new Tacka(200, 200);
+		/*Tacka t1 = new Tacka(200, 200);
 		//t1.crtajSe(g);
 		
 		Linija l1 = new Linija(new Tacka(300, 300), t1);
@@ -48,8 +66,15 @@ public class Crtez extends JPanel{
 		p1.centar().crtajSe(g);
 		
 		Krug kr1 = new Krug(k1.dijagonala().sredinaLinije(), k1.getStranica()/2);
-		kr1.crtajSe(g);
+		kr1.crtajSe(g);*/
 		
+		Iterator it = oblici.iterator();
+		while(it.hasNext()){
+			Oblik o = (Oblik)it.next();
+			o.crtajSe(g);
+		}
+		
+		repaint();
 	}
 
 }
