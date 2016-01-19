@@ -1,4 +1,4 @@
-package rekapitulacija;
+package wb;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -167,6 +167,19 @@ public class VezbaWB extends JFrame {
 		});
 		btnBriseListu.setBounds(71, 490, 89, 23);
 		pnlOsnovni.add(btnBriseListu);
+		
+		JButton btnPravougaonik = new JButton("Pravougaonik");
+		btnPravougaonik.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgPravougaonik dlgp = new DlgPravougaonik();
+				
+				dlgp.setVisible(true);
+				
+				System.out.println("Visina: " + dlgp.visina + "\nSirina: " + dlgp.sirina + "\nBoja: " + dlgp.boja);
+			}
+		});
+		btnPravougaonik.setBounds(583, 490, 171, 23);
+		pnlOsnovni.add(btnPravougaonik);
 		
 		
 		
